@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import './App.css';
-import CartOverlay from './components/CartOverlay';
 import ProductListingPage from './pages/ProductListingPage';
 import ProductDetailsPage from'./pages/ProductDetailsPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
