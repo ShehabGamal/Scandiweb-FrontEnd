@@ -1,0 +1,92 @@
+.products-page{
+    width:80vw;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: center; 
+    align-items: center;   
+    margin:0 auto;
+}
+.active-category{
+    margin: 50px 0 80px 0 ;
+    font-family: 'Raleway',sans-serif;
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-family: 'Raleway',sans-serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 67.2px;
+    text-align: left;
+     
+   }
+.product-list{
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+        
+}
+
+.product-item-inStock{
+    flex: 0 0 33.3333%;
+    justify-content: center;    
+}
+.product-item-inStock .out-of-stock{
+    display:none;
+}
+.product-item-outStock{
+    flex: 0 0 33.3333%;
+    justify-content: center;
+    position: relative;
+
+}
+.product-item-outStock .out-of-stock{
+    width:75%;
+    height: 75%;
+    position: absolute;
+    
+}
+.product-item-outStock .out-of-stock h2{
+    height:100%;
+    width:100%;
+    font-family: 'Raleway',sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 38.4px;
+    text-align: left;
+    color: #8D8F9A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+div div .kebab-case{
+    width: 354px;
+    height: 330px;
+}
+
+div div .product-attributes{
+    width:354px;
+    height:58px;
+    margin:0 7px;
+    
+}
+.product-item-outStock img{
+    opacity: 0.5;
+}
+.product-item-outStock .product-attributes{
+    color   : #8D8F9A;
+
+}
+.link{
+    text-decoration: none;
+    color: #1D1F22;
+    flex: 0 0 33.3333%;
+    justify-content: center;
+}
