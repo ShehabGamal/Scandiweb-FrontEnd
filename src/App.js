@@ -69,21 +69,21 @@ class App extends Component {
       
         />
           <Routes>
-            
-            <Route path="/" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                            toggleProduct={this.toggleProduct} 
-                                                            isCartOpen={this.state.isCartOpen}/>}/>
-            <Route path="/clothes" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                            toggleProduct={this.toggleProduct} 
-                                                            isCartOpen={this.state.isCartOpen}/>}/>
-            <Route path="/tech" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                            toggleProduct={this.toggleProduct} 
-                                                            isCartOpen={this.state.isCartOpen}/>}/>
-            <Route path=':category/product/:id' element={<ProductDetailsPage currentProductId={this.state.currentProductId}
-                                                                    isCartOpen={this.state.isCartOpen}
-                                                                    />}/>
-                                         
-          </Routes>
+
+<Route path="/" element={<ProductListingPage activeCategory={this.state.activeCategory} 
+                                                toggleProduct={this.toggleProduct} 
+                                                isCartOpen={this.state.isCartOpen}/>}/>
+<Route path="/clothes" element={<ProductListingPage activeCategory={this.state.activeCategory} 
+                                                toggleProduct={this.toggleProduct} 
+                                                isCartOpen={this.state.isCartOpen}/>}/>
+<Route path="/tech" element={<ProductListingPage activeCategory={this.state.activeCategory} 
+                                                toggleProduct={this.toggleProduct} 
+                                                isCartOpen={this.state.isCartOpen}/>}/>
+<Route path={`${this.state.activeCategory==='all'?'':'/:category'}/product/:id`} element={<ProductDetailsPage currentProductId={this.state.currentProductId}
+                                                        isCartOpen={this.state.isCartOpen}
+                                                        />}/>
+
+</Routes>
       
         </Router>
       </>
