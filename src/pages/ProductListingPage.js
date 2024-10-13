@@ -50,7 +50,7 @@ class ProductListingPage extends Component {
       <div className="product-list">
       {activeCategory==="all"?this.state.products.map((product,index)=>(
             product.in_stock?
-            <div data-testid ={`product-${product.id}`}>
+            <div data-testid ={`product-${product.name.toLowerCase().replace(" ","-")}`}>
             <Link key={index} to={`product/${product.id}`} onClick={()=>{toggleProduct(product.id)}}  className='link'>  
             <div  id={product.id} className={product.in_stock ? 'product-item-inStock' : 'product-item-outStock'} >
             <div className='out-of-stock'>
@@ -70,7 +70,7 @@ class ProductListingPage extends Component {
         :this.state.products.filter((product)=>(product.category['name']===activeCategory)).map((product,index)=>(
             product.in_stock?
             <div data-testid ={`product-${product.id}`}>
-            <Link key={index} to={`product/${product.id}`} onClick={()=>{toggleProduct(product.id)}}  className='link'>  
+            <Link key={index} to={`${activeCategory==="all"?"":`${activeCategory}/`}product/${product.id}`} onClick={()=>{toggleProduct(product.id)}}  className='link'>  
             <div  id={product.id} className={product.in_stock ? 'product-item-inStock' : 'product-item-outStock'} >
             <div className='out-of-stock'>
             <h2>Out Of Stock</h2>

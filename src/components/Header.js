@@ -17,8 +17,8 @@ class Header extends Component {
             <Link
               key={index}
               data-testid={category.name === activeCategory ? 'active-category-link' : 'category-link'}
-              onClick={() => onCategorySelect(category.name)}
-              to={`/${category.name}`}
+              onClick={() => {onCategorySelect(category.name);}}
+              to={`/`}
             >
               {category.name.toUpperCase()}
             </Link>
@@ -35,7 +35,7 @@ class Header extends Component {
         {isCartOpen?<CartOverlay cartItemsCount={cartItemsCount}/>:""}  
       </header>
     );
-  }
+  } 
 }
 
 export default Header;

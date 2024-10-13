@@ -16,6 +16,7 @@ class App extends Component {
       isCartOpen: false,
       total: 0,
       currentProductId:null,
+    
     };
   }
 
@@ -50,6 +51,9 @@ class App extends Component {
   toggleProduct=(currentProductId)=>{
     this.setState({currentProductId})
   }
+  toggleActive=()=>{
+    this.setState({active:true})
+  }
   render() {
     
     return (
@@ -62,10 +66,11 @@ class App extends Component {
           cartItemsCount={this.state.cartItems.length}
           onCartOpen={this.toggleCart}
           isCartOpen={this.state.isCartOpen}
+      
         />
           <Routes>
             
-            <Route path="/all" element={<ProductListingPage activeCategory={this.state.activeCategory} 
+            <Route path="/" element={<ProductListingPage activeCategory={this.state.activeCategory} 
                                                             toggleProduct={this.toggleProduct} 
                                                             isCartOpen={this.state.isCartOpen}/>}/>
             <Route path="/clothes" element={<ProductListingPage activeCategory={this.state.activeCategory} 
@@ -74,10 +79,10 @@ class App extends Component {
             <Route path="/tech" element={<ProductListingPage activeCategory={this.state.activeCategory} 
                                                             toggleProduct={this.toggleProduct} 
                                                             isCartOpen={this.state.isCartOpen}/>}/>
-            <Route path="/product/:id" element={<ProductDetailsPage currentProductId={this.state.currentProductId}
+            <Route path=':category/product/:id' element={<ProductDetailsPage currentProductId={this.state.currentProductId}
                                                                     isCartOpen={this.state.isCartOpen}
                                                                     />}/>
-                                                                    
+                                         
           </Routes>
       
         </Router>
