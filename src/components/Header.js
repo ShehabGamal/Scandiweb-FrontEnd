@@ -14,14 +14,14 @@ class Header extends Component {
       <header>
         <nav>
           {categories.map((category,index) => (
-            <div
+            <Link
               key={index}
               data-testid={category.name === activeCategory ? 'active-category-link' : 'category-link'}
               onClick={() => onCategorySelect(category.name)}
-              
+              to={`/${category.name}`}
             >
               {category.name.toUpperCase()}
-            </div>
+            </Link>
           ))}
         </nav>
         <Link to="/" className='link'>

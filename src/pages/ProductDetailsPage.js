@@ -66,7 +66,7 @@ handleChoiceClick = (attributeName, value) => {
                  opacity: isCartOpen ? 0.5 : 1,
                   pointerEvents: isCartOpen ? 'none' : 'auto', 
     }}>
-     <Slider id={this.state.product.id}/>
+     <Slider id={this.state.product.id} data-testid='product-gallery'/>
      <div className='product-properities'>
         <div className='name'>
           {this.state.product.name}
@@ -91,7 +91,8 @@ handleChoiceClick = (attributeName, value) => {
                                 style={{
                                 backgroundColor: header === 'Color' ? attribute.value : "",
                               }} key={attribute.value}
-                                 onClick={() => this.handleChoiceClick(header, attribute.value)}>
+                                 onClick={() => this.handleChoiceClick(header, attribute.value)}
+                                 data-testid={`product-attribute-${attribute.value}`}>
                                 {header==='Color'?" ":attribute.value}
                               </div>
                         ))}
@@ -103,10 +104,10 @@ handleChoiceClick = (attributeName, value) => {
           <div className='price-tag'>PRICE:</div>
           <div className='price-amount'>{this.state.product.currency_symbol}{this.state.product.amount}</div>
         </div>
-        <button className='add-to-cart'>
+        <button className='add-to-cart' data-testid='add-to-cart'>
         Add to cart
         </button>
-        <div className='description'>
+        <div className='description' data-testid='product-description'>
           {this.removeHTMLTags(this.state.product.description)}
         </div>
      </div>

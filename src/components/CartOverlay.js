@@ -8,7 +8,7 @@ class CartOverlay extends Component {
     const {cartItemsCount}=this.props
     return (
                       <>
-                        <div className='cart-wrapper' >
+                        <div className='cart-wrapper' data-testid="cart-overlay">
                           <div className='cart-holder'>
                               <div className='items-count'><b>My Bag</b>: {cartItemsCount} {cartItemsCount===1?"item":"items"}</div>
                                 

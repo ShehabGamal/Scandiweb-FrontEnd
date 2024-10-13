@@ -90,3 +90,6 @@ div div .product-attributes{
     flex: 0 0 33.3333%;
     justify-content: center;
 }
+.parent{
+    justify-content: center;
+}
