@@ -16,7 +16,6 @@ class App extends Component {
       isCartOpen: false,
       total: 0,
       currentProductId:null,
-    
     };
   }
 
@@ -38,6 +37,7 @@ class App extends Component {
       .catch((error) => {
         console.error('Error fetching categories:', error);
       });
+      
   }
 
   
@@ -58,7 +58,9 @@ class App extends Component {
     
     return (
       <>
+
        <Router>
+
         <Header
           categories={this.state.categories}
           activeCategory={this.state.activeCategory}
@@ -66,29 +68,34 @@ class App extends Component {
           cartItemsCount={this.state.cartItems.length}
           onCartOpen={this.toggleCart}
           isCartOpen={this.state.isCartOpen}
-      
         />
+
           <Routes>
 
-<Route path="/" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                toggleProduct={this.toggleProduct} 
-                                                isCartOpen={this.state.isCartOpen}/>}/>
-<Route path="/clothes" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                toggleProduct={this.toggleProduct} 
-                                                isCartOpen={this.state.isCartOpen}/>}/>
-<Route path="/tech" element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                toggleProduct={this.toggleProduct} 
-                                                isCartOpen={this.state.isCartOpen}/>}/>
-<Route path={`${this.state.activeCategory==='all'?'':'/:category'}/product/:id`} element={<ProductDetailsPage currentProductId={this.state.currentProductId}
-                                                        isCartOpen={this.state.isCartOpen}
-                                                        />}/>
+                <Route path="/" exact 
+                       element={<ProductListingPage activeCategory={this.state.activeCategory} 
+                                                    toggleProduct={this.toggleProduct} 
+                                                    isCartOpen={this.state.isCartOpen}/>}/>
 
-</Routes>
+                <Route path="/:category" exact 
+                       element={<ProductListingPage activeCategory={this.state.activeCategory} 
+                                                                          toggleProduct={this.toggleProduct} 
+                                                                          isCartOpen={this.state.isCartOpen}/>}/>
+
+                <Route path={this.state.activeCategory!=="all"?'/:category/:category/product/:id':"/product/:id"}  exact 
+                       element={<ProductDetailsPage currentProductId={this.state.currentProductId}
+                                                    isCartOpen={this.state.isCartOpen}
+                                                      />}/>
+          </Routes>
       
         </Router>
+
       </>
+
     );
+
   }
+  
 }
 
 export default App;

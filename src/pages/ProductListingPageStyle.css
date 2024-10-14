@@ -1,4 +1,4 @@
-.products-page{
+.main-listing-page{
     width:80vw;
     display: flex;
     flex-flow:column nowrap;
@@ -66,7 +66,7 @@
 }
 
 
-div div .kebab-case{
+div div .product-image{
     width: 354px;
     height: 330px;
 }

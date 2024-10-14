@@ -12,13 +12,15 @@ class ProductDetailsPage extends Component {
         attributes:[],
         attributeNames:[],
         selectedChoices:{},
-    };
+    }; 
   }
 
   componentDidMount() {
+
     const {currentProductId} = this.props;
 
     if(currentProductId){
+
     fetch('http://shehab-gamal334.serv00.net:38837/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -38,9 +40,12 @@ class ProductDetailsPage extends Component {
       .catch((error) => {
         console.error('Error fetching categories:', error);
       });
+
+    }
+
   }
-  }
-  removeHTMLTags(htmlString) {
+
+removeHTMLTags(htmlString) {
     
     const parser = new DOMParser();
     
@@ -49,69 +54,117 @@ class ProductDetailsPage extends Component {
     const textContent = doc.body.textContent || "";
     
     return textContent.trim();
-} 
+}
+
 handleChoiceClick = (attributeName, value) => {
+
   this.setState((prevState) => ({
+
     selectedChoices: {
       ...prevState.selectedChoices,
       [attributeName]: value, 
     },
+
   }));
+
 };
+
+
   render() {
+
     const {isCartOpen}=this.props;
+
     return (
-     <div className={`holder ${isCartOpen ? 'disabled' : ''}`}
-          style={{
-                 opacity: isCartOpen ? 0.5 : 1,
-                  pointerEvents: isCartOpen ? 'none' : 'auto', 
-    }}>
-     <Slider id={this.state.product.id} data-testid='product-gallery'/>
-     <div className='product-properities'>
-        <div className='name'>
-          {this.state.product.name}
-        </div>
-        <div className="size">
-        {this.state.attributeNames.map((header, headerIndex) => (
-              <>
-              <div key={headerIndex} className="size-tag">
-              {header}
-              </div>
-                <div className="choices">
-                  {this.state.attributes
-                      .filter((attribute) => attribute.name === header)
-                      .map((attribute, index) => (
-                              <div className={`size-choice ${
-                                this.state.selectedChoices[header] === attribute.value
-                                  ? header === 'Color'
-                                    ? 'active-color'
-                                    : 'active'
-                                  : ''
-                              }`}
-                                style={{
-                                backgroundColor: header === 'Color' ? attribute.value : "",
-                              }} key={attribute.value}
-                                 onClick={() => this.handleChoiceClick(header, attribute.value)}
-                                 data-testid={`product-attribute-${attribute.value}`}>
-                                {header==='Color'?" ":attribute.value}
+
+                 <div className={`details-container ${isCartOpen ? 'disabled' : ''}`}
+                      style={{
+                          opacity: isCartOpen ? 0.5 : 1,
+                          pointerEvents: isCartOpen ? 'none' : 'auto', 
+               }}>
+
+                              <Slider id={this.state.product.id} data-testid='product-gallery'/>
+
+                            <div className='product-details'>
+
+                              <div className='product-name'>
+
+                                {this.state.product.name}
+
                               </div>
-                        ))}
-                 </div>
-            </>
-         ))}
-        </div>
-        <div className='price'>
-          <div className='price-tag'>PRICE:</div>
-          <div className='price-amount'>{this.state.product.currency_symbol}{this.state.product.amount}</div>
-        </div>
-        <button className='add-to-cart' data-testid='add-to-cart'>
-        Add to cart
-        </button>
-        <div className='description' data-testid='product-description'>
-          {this.removeHTMLTags(this.state.product.description)}
-        </div>
-     </div>
-     </div>)
- }}
+
+                              <div className="attributes">
+
+                              {this.state.attributeNames.map((header, headerIndex) => (
+
+                                    <>
+
+                                    <div key={headerIndex} className="attribute-tag">
+
+                                    {header}
+
+                                    </div>
+
+                                    <div className="attributes-variations">
+
+                                                      {this.state.attributes
+                                                        .filter((attribute) => attribute.name === header)
+                                                        .map((attribute, index) => (
+                                                                <div className={`preference ${
+                                                                  this.state.selectedChoices[header] === attribute.value
+                                                                   ? header === 'Color'
+                                                                     ? 'active-color'
+                                                                      : 'active'
+                                                                    : ''
+                                                               }`}
+                                                                  style={{
+                                                                  backgroundColor: header === 'Color' ? attribute.value : "",
+                                                                }} key={attribute.value}
+                                                                   onClick={() => this.handleChoiceClick(header, attribute.value)}
+                                                                   data-testid={`product-attribute-${attribute.name.toLowerCase().replaceAll(' ',"-")}`}>
+
+                                                                  {header==='Color'?" ":attribute.value}
+
+                                                               </div>
+
+                                                         ))}
+
+                                                  </div>
+
+                                             </>
+
+                                           ))}
+
+                                          </div>
+
+
+                                           <div className='price'>
+
+                                             <div className='price-tag'>PRICE:</div>
+
+                                             <div className='price-amount' data-testid='product-attribute-price'>{this.state.product.currency_symbol}{this.state.product.amount}</div>
+
+                                           </div>
+
+                                           <button className='add-to-cart' data-testid='add-to-cart'>
+
+                                           Add to 
+        
+                                           </button>
+
+                                           <div className='description' data-testid='product-description'>
+
+                                                {this.removeHTMLTags(this.state.product.description)}
+
+                                          </div>
+
+                              </div>
+
+                    </div>
+
+      )
+
+    }
+
+  }
 
 export default ProductDetailsPage;

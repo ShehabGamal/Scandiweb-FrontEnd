@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import './SliderStyle.css'
 
+
+
+
+
+
 class Slider extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +16,7 @@ class Slider extends Component {
   }
 
   componentDidMount() {
+
     const {id} = this.props;
 
     if(id){
@@ -37,9 +43,13 @@ class Slider extends Component {
   }
   
 componentDidUpdate(prevProps){
+
   const {id} = this.props;
+
   if(prevProps.id!==id){
+
     if(id){
+
       fetch('http://shehab-gamal334.serv00.net:38837/graphql', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -59,6 +69,7 @@ componentDidUpdate(prevProps){
         .catch((error) => {
           console.error('Error fetching categories:', error);
         });
+
     }
   }
 }
@@ -85,15 +96,15 @@ componentDidUpdate(prevProps){
   };
 
   render() {
+
     const { currentIndex,gallery } = this.state;
 
-    if(gallery===null){
-      return "no images to show"
-    }
-
     return (
+
       <> 
+
         <div className="thumbnails">
+
           {gallery.map((image, index) => (
             <img
               key={index}
@@ -102,33 +113,35 @@ componentDidUpdate(prevProps){
               className={`thumbnail ${index === currentIndex ? "active-thumbnail" : ""}`}
               onClick={() => this.setCurrentSlide(index)}
             />
-          ))}
+          ))
+          }
+
         </div>
         
-      <div className="slider">
+        <div className="slider">
 
-        <button className="prev" onClick={() => this.moveSlide(-1)}>&#10094;</button>
+            <button className="prev" onClick={() => this.moveSlide(-1)}>&#10094;</button>
 
+            <div className="slider-container">
+              {gallery.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className={`slide ${index === currentIndex ? "active-slide" : ""}`}
+                />
+              ))}
+            </div>
+
+           <button className="next" onClick={() =>{ this.moveSlide(1);console.log(gallery)}}>&#10095;</button>
         
-        <div className="slider-container">
-          {gallery.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Slide ${index + 1}`}
-              className={`slide ${index === currentIndex ? "active-slide" : ""}`}
-            />
-          ))}
         </div>
 
-        
-        <button className="next" onClick={() =>{ this.moveSlide(1);console.log(gallery)}}>&#10095;</button>
-
-        
-      </div>
       </>
+
     );
-}
   }
+  
+ }
 
 export default Slider;

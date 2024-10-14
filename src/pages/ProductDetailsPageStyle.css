@@ -1,10 +1,4 @@
-.product-properities{
-    width:292px;
-    height: 541px;
-    margin-left: 50px;
-    margin-top: 20px;
-}
-.holder{
+.details-container{
     display: flex;
     flex-flow: row wrap;
     width:82%;
@@ -13,11 +7,15 @@
     margin:0 auto;
     gap:30px;
 }
-.holder.disabled {
-    filter: grayscale(100%); 
-  }
-  
-.name{
+
+.product-details{
+    width:292px;
+    height: 541px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.product-name{
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-weight: 600;
@@ -26,14 +24,16 @@
     color:#1D1F22;
 
 }
-.size{
+
+.attributes{
     display:flex;
     flex-flow: column wrap;
     margin:56px 0 0 0;
     justify-content: flex-start;
     gap:15px;
 }
-.size .size-tag{
+
+.attributes .attribute-tag{
     display:flex;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 18px;
@@ -42,12 +42,14 @@
     text-align: center;
     margin:0 0 10px 0;
 }
-.size .choices{
+
+.attributes .attributes-variations{
     display:flex;
     margin:0;
     gap:15px;
 }
-.size .choices .size-choice{
+
+.attributes .attributes-variations .preference{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,12 +58,20 @@
     border: 1px solid #1D1F22;
     margin:0;
 }
+.attributes .attributes-variations .preference.active{
+    color:white;
+    background:#1D1F22;
+  }
+.attributes .attributes-variations .preference.active-color{
+    border:2px solid #5ECE7B ;
+}
 
 .price{
     display:flex;
     flex-flow: column wrap;
     margin:22px 0 0 0;
 }
+
 .price .price-tag{
     display:flex;
     font-family: "Roboto Condensed", sans-serif;
@@ -71,6 +81,7 @@
     text-align: center;
     margin:0 0 10px 0;
 }
+
 .price .price-amount{
     font-family: 'Raleway',sans-serif;
     font-size: 24px;
@@ -78,8 +89,8 @@
     line-height: 18px;
     text-align:left;
     margin:0;
-
 }
+
 .add-to-cart{
     width:292px;
     height:52px;
@@ -93,7 +104,6 @@
     text-align: center;
     border: 0;
     margin-top:20px;
-
 }
 .description{
     font-family: "Roboto", sans-serif;
@@ -101,12 +111,9 @@
     font-weight: 400;
     line-height: 25.59px;
     text-align: left;
+}
 
-}
-.size .choices .size-choice.active{
-    color:white;
-    background:#1D1F22;
+.holder.disabled {
+    filter: grayscale(100%); 
   }
-.size .choices .size-choice.active-color{
-    border:2px solid #5ECE7B ;
-}
+  
