@@ -82,9 +82,11 @@ handleChoiceClick = (attributeName, value) => {
                           pointerEvents: isCartOpen ? 'none' : 'auto', 
                }}>
 
-                              <Slider id={this.state.product.id} data-testid='product-gallery'/>
+                            <Slider id={this.state.product.id} />
 
+                            
                             <div className='product-details'>
+                              
 
                               <div className='product-name'>
 
@@ -92,11 +94,11 @@ handleChoiceClick = (attributeName, value) => {
 
                               </div>
 
-                              <div className="attributes">
+                              <div className="attributes" >
 
                               {this.state.attributeNames.map((header, headerIndex) => (
 
-                                    <>
+                                    <div className="attribute-container" >
 
                                     <div key={headerIndex} className="attribute-tag">
 
@@ -109,6 +111,7 @@ handleChoiceClick = (attributeName, value) => {
                                                       {this.state.attributes
                                                         .filter((attribute) => attribute.name === header)
                                                         .map((attribute, index) => (
+                                                            
                                                                 <div className={`preference ${
                                                                   this.state.selectedChoices[header] === attribute.value
                                                                    ? header === 'Color'
@@ -120,9 +123,9 @@ handleChoiceClick = (attributeName, value) => {
                                                                   backgroundColor: header === 'Color' ? attribute.value : "",
                                                                 }} key={attribute.value}
                                                                    onClick={() => this.handleChoiceClick(header, attribute.value)}
-                                                                   data-testid={`product-attribute-${attribute.name.toLowerCase().replaceAll(' ',"-")}`}>
-
-                                                                  {header==='Color'?" ":attribute.value}
+                                                                   data-testid={`product-attribute-${header.toLowerCase().replaceAll(' ',"-")}-${attribute.value}`}
+                                                                  >
+                                                                        <div>{header==='Color'?" ":attribute.value}</div>
 
                                                                </div>
 
@@ -130,11 +133,11 @@ handleChoiceClick = (attributeName, value) => {
 
                                                   </div>
 
-                                             </>
+                                             </div>
 
                                            ))}
 
-                                          </div>
+                                          </div>  
 
 
                                            <div className='price'>
@@ -145,9 +148,9 @@ handleChoiceClick = (attributeName, value) => {
 
                                            </div>
 
-                                           <button className='add-to-cart' data-testid='add-to-cart'>
+                                           <button className='add-to-cart' data-testid='add-to-cart' disabled={true}>
 
-                                           Add to 
+                                           Add to cart
         
                                            </button>
 

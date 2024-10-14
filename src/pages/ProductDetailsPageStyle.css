@@ -9,7 +9,7 @@
 }
 
 .product-details{
-    width:292px;
+    width:300px;
     height: 541px;
     margin-left: 50px;
     margin-top: 20px;
@@ -22,17 +22,22 @@
     line-height: 27px;
     text-align: left;
     color:#1D1F22;
+    width:100%;
 
 }
 
 .attributes{
     display:flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     margin:56px 0 0 0;
     justify-content: flex-start;
     gap:15px;
 }
-
+.attribute-container{
+    display:flex;
+    margin:0;
+    flex-flow: column wrap;
+}
 .attributes .attribute-tag{
     display:flex;
     font-family: "Roboto Condensed", sans-serif;
@@ -47,6 +52,9 @@
     display:flex;
     margin:0;
     gap:15px;
+    flex-flow:row wrap;
+    justify-content: flex-start;
+    width:100%;
 }
 
 .attributes .attributes-variations .preference{

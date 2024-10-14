@@ -101,7 +101,7 @@ componentDidUpdate(prevProps){
 
     return (
 
-      <> 
+      <div  className="gallery-container" data-testid='product-gallery'> 
 
         <div className="thumbnails">
 
@@ -137,7 +137,7 @@ componentDidUpdate(prevProps){
         
         </div>
 
-      </>
+      </div>
 
     );
   }
