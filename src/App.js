@@ -3,7 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import ProductListingPage from './pages/ProductListingPage';
 import ProductDetailsPage from'./pages/ProductDetailsPage';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Navigate } from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -71,18 +71,13 @@ class App extends Component {
         />
 
           <Routes>
-
-                <Route path="/" exact 
-                       element={<ProductListingPage activeCategory={this.state.activeCategory} 
-                                                    toggleProduct={this.toggleProduct} 
-                                                    isCartOpen={this.state.isCartOpen}/>}/>
-
+                <Route path="/" element={<Navigate to="/all" />} />
                 <Route path="/:category" exact 
                        element={<ProductListingPage activeCategory={this.state.activeCategory} 
                                                                           toggleProduct={this.toggleProduct} 
                                                                           isCartOpen={this.state.isCartOpen}/>}/>
 
-                <Route path={this.state.activeCategory!=="all"?'/:category/:category/product/:id':"/product/:id"}  exact 
+                <Route path="/:category/product/:id"  exact 
                        element={<ProductDetailsPage currentProductId={this.state.currentProductId}
                                                     isCartOpen={this.state.isCartOpen}
                                                       />}/>

@@ -95,7 +95,7 @@ class ProductListingPage extends Component {
             product.in_stock?
 
             <Link key={index} 
-                  to={`${activeCategory==="all"?"":`${activeCategory}/`}product/${product.id}`} 
+                  to={`product/${product.id}`} 
                   onClick={()=>{toggleProduct(product.id)}}  
                   className='link'
                   data-testid={`product-${product.name.toLowerCase().replaceAll(" ","-")}`}>  
